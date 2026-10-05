@@ -1,0 +1,24 @@
+spring:
+  application:
+    name: GATEWAY-Service
+  cloud:
+    gateway:
+      server:
+        webmvc:
+          routes:
+          - id: servicio1
+            uri: lb://SALUDO-SERVICE
+            predicates:
+            - Path=/say/saludo/**
+          - id: servicio2
+            uri: lb://REST-Employee
+            predicates:
+              - Path=/api/employee/**
+
+server:
+  port: 8082
+
+jwt:
+  secret: "5367566B59703373367639792F423F4528482B4D6251655468576D5A71347437"
+
+
